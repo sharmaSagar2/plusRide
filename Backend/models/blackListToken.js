@@ -10,7 +10,7 @@ const blackListTokenSchema = new mongoose.Schema({
     createdAt: {
         type: Date,
         default: Date.now,
-        expires: '3od' // This will automatically remove the document after 24 hours
+        expires: '30d' // This will automatically remove the document after 24 hours
     }
 });
 

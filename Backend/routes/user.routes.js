@@ -6,8 +6,7 @@ const authMiddleware = require("../middlewares/auth.middleware");
 
 const router = express.Router();
 
-router.post(
-  '/register',
+router.post('/register',
   [
     body('email')
       .isEmail()
