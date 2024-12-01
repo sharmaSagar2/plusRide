@@ -155,3 +155,162 @@ curl -X POST http://yourapi.com/users/login \
 }'
 ```
 
+
+# User API Documentation
+
+## Endpoints
+
+### 1. User Logout
+
+**Endpoint:** `GET /users/logout`
+
+**Description:**  
+This endpoint allows a logged-in user to log out of the application. It clears the authentication token from the user's cookies and blacklists the token to prevent future use.
+
+**Request:**
+- **Headers:**
+  - `Authorization`: Bearer token (optional, if not provided, the token will be retrieved from cookies)
+  
+- **Cookies:**
+  - `token`: The JWT token that was issued upon user login.
+
+**Response:**
+- **Status Code:** `200 OK`
+  - **Body:**
+    ```json
+    {
+      "message": "User  logged out successfully"
+    }
+    ```
+- **Status Code:** `401 Unauthorized`
+  - **Body:**
+    ```json
+    {
+      "error": "Unauthorized"
+    }
+    ```
+  - This response occurs if the user is not authenticated or if the provided token is blacklisted or invalid.
+
+---
+
+### 2. User Profile
+
+**Endpoint:** `GET /users/profile`
+
+**Description:**  
+This endpoint retrieves the profile information of the currently authenticated user. The user must be logged in and provide a valid authentication token.
+
+**Request:**
+- **Headers:**
+  - `Authorization`: Bearer token (optional, if not provided, the token will be retrieved from cookies)
+
+- **Cookies:**
+  - `token`: The JWT token that was issued upon user login.
+
+**Response:**
+- **Status Code:** `200 OK`
+  - **Body:**
+    ```json
+    {
+      "_id": "user_id",
+      "fullname": {
+        "firstname": "User FirstName",
+        "lastname": "User LastName"
+      },
+      "email": "user@example.com",
+      "socketId": "optional_socket_id"
+    }
+    ```
+- **Status Code:** `401 Unauthorized`
+  - **Body:**
+    ```json
+    {
+      "error": "Unauthorized"
+    }
+    ```
+  - This response occurs if the user is not authenticated or if the provided token is invalid.
+
+---
+
+## Notes
+- Ensure that the user is authenticated before accessing the `/profile` endpoint.
+- The token used for authentication must be valid and not blacklisted to access either endpoint.# User API Documentation
+
+## Endpoints
+
+### 1. User Logout
+
+**Endpoint:** `GET /users/logout`
+
+**Description:**  
+This endpoint allows a logged-in user to log out of the application. It clears the authentication token from the user's cookies and blacklists the token to prevent future use.
+
+**Request:**
+- **Headers:**
+  - `Authorization`: Bearer token (optional, if not provided, the token will be retrieved from cookies)
+  
+- **Cookies:**
+  - `token`: The JWT token that was issued upon user login.
+
+**Response:**
+- **Status Code:** `200 OK`
+  - **Body:**
+    ```json
+    {
+      "message": "User  logged out successfully"
+    }
+    ```
+- **Status Code:** `401 Unauthorized`
+  - **Body:**
+    ```json
+    {
+      "error": "Unauthorized"
+    }
+    ```
+  - This response occurs if the user is not authenticated or if the provided token is blacklisted or invalid.
+
+---
+
+### 2. User Profile
+
+**Endpoint:** `GET /users/profile`
+
+**Description:**  
+This endpoint retrieves the profile information of the currently authenticated user. The user must be logged in and provide a valid authentication token.
+
+**Request:**
+- **Headers:**
+  - `Authorization`: Bearer token (optional, if not provided, the token will be retrieved from cookies)
+
+- **Cookies:**
+  - `token`: The JWT token that was issued upon user login.
+
+**Response:**
+- **Status Code:** `200 OK`
+  - **Body:**
+    ```json
+    {
+      "_id": "user_id",
+      "fullname": {
+        "firstname": "User FirstName",
+        "lastname": "User LastName"
+      },
+      "email": "user@example.com",
+      "socketId": "optional_socket_id"
+    }
+    ```
+- **Status Code:** `401 Unauthorized`
+  - **Body:**
+    ```json
+    {
+      "error": "Unauthorized"
+    }
+    ```
+  - This response occurs if the user is not authenticated or if the provided token is invalid.
+
+---
+
+## Notes
+- Ensure that the user is authenticated before accessing the `/profile` endpoint.
+- The token used for authentication must be valid and not blacklisted to access either endpoint.
+
