@@ -57,14 +57,14 @@ module.exports.loginCaptain = async (req, res) => {
         return res.status(401).json({ message: 'Invalid email or password' });
     }
 
-    const token = captain.generateAuthToken();
-
+    const token = await captain.generateAuthToken();
+    
     res.cookie('token', token);
 
     res.status(200).json({ token, captain });
 }
 
-module.exports.getCaptainProfile = async (req, res, next) => {
+module.exports.getCaptainProfile = async (req, res) => {
     res.status(200).json({ captain: req.captain });
 }
 

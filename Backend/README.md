@@ -314,3 +314,6 @@ This endpoint retrieves the profile information of the currently authenticated u
 - Ensure that the user is authenticated before accessing the `/profile` endpoint.
 - The token used for authentication must be valid and not blacklisted to access either endpoint.
 
+
+
+
