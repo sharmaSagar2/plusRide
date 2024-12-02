@@ -315,5 +315,114 @@ This endpoint retrieves the profile information of the currently authenticated u
 - The token used for authentication must be valid and not blacklisted to access either endpoint.
 
 
+# Register a Captain
+## Endpoint: `/register`
+### Method: `POST`
+Description: This endpoint allows a new captain to register in the system.
 
+`Request Body`
 
+```json
+{
+  "fullname": {
+    "firstname": "string (min: 3 characters)",
+    "lastname": "string"
+  },
+  "email": "string (valid email format)",
+  "password": "string (min: 5 characters)",
+  "vehicle": {
+    "color": "string (min: 3 characters)",
+    "plate": "string (min: 3 characters)",
+    "capacity": "string (min: 1 character)",
+    "vehicleType": "string (must be either 'car', 'motorcycle', or 'auto')"
+  }
+}
+```
+# Responses
+## 201 Created
+Success message along with the token and captain details.
+```json
+{
+  "message": "Captain created successfully",
+  "token": "string",
+  "captain": "object"
+}
+```
+
+## 400 Bad Request
+If any of the required fields are missing or invalid.
+```json
+{
+  "errors": [
+    {
+      "msg": "Error message",
+      "param": "field name",
+      "location": "body"
+    }
+  ]
+}
+```
+
+# Login a Captain
+## Endpoint: `/login`
+### Method: `POST`
+Description: This endpoint allows a captain to log in to the system.
+
+Request Body
+```json
+{
+  "email": "string (valid email format)",
+  "password": "string (min: 5 characters)"
+}
+```
+
+## Responses
+## 200 OK
+Success message along with the token and captain details
+```json
+{
+  "token": "string",
+  "captain": "object"
+}
+```
+## 401 Unauthorized
+If the email or password is invalid
+```json
+{
+  "message": "Invalid email or password"
+}
+```
+ # Get Captain Profile
+## Endpoint: `/profile`
+### Method:` GET`
+Description: This endpoint retrieves the profile information of the logged-in captain.
+
+`Responses`
+`200 OK`
+Returns the captain's profile information.
+```json
+{
+  "captain": "object"
+}
+```
+# Logout a Captain
+## Endpoint: `/logout`
+### Method: `GET`
+Description: This endpoint allows a captain to log out of the system.
+
+`Responses`
+`200 OK`
+Success message indicating successful logout.
+```json
+
+{
+  "message": "Logout successfully"
+}
+```
+`401 Unauthorized`
+If the captain is not authenticated.
+```json
+{
+  "error": "Unauthorized"
+}
+```
