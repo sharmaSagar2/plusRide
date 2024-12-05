@@ -1,6 +1,6 @@
-import  { useState } from 'react';
-import PropTypes from 'prop-types'; // Import PropTypes
-import { UserDataContext } from './UserDataContext';
+import { useState } from 'react';
+import PropTypes from 'prop-types';
+import UserDataContext from './UserDataContext';
 
 const UserContext = ({ children }) => {
   const [user, setUser] = useState({
@@ -20,9 +20,8 @@ const UserContext = ({ children }) => {
   );
 };
 
-// Define PropTypes
 UserContext.propTypes = {
-  children: PropTypes.node.isRequired, // Validate 'children'
+  children: PropTypes.node.isRequired,
 };
 
 export default UserContext;
